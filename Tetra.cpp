@@ -91,7 +91,7 @@ class Customer
         string getTime () {return r.getTime();}
 
         void setQuantity(int q){r.setQuantity(q);}
-        int getQuantity(){return r.getQuantity;}
+        int getQuantity(){return r.getQuantity();}
 };
 
 class Meal
