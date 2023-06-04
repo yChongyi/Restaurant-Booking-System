@@ -4,15 +4,58 @@
 //Member 1: NG SHU YU A22EC0228
 //Member 2: YEOH CHONG YI A22EC0295
 //Member 3: WONG QIAO YING
-//Member 4: NICOLE LIM TZE YEE
+//Member 4: NICOLE LIM TZE YEE A22EC0123
 
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <time.h>
 using namespace std;
 
 class Reservation
-{};
+{
+    private:
+        int reservationNum;
+        string date, time;
+        int quantity;
+
+    public:
+        Reservation (string d="", string t="", int rn=0){
+            date=d;
+            time=t;
+            reservationNum=rn;
+        }
+        void setDate (string d=""){
+            date=d;
+        }
+        void setTime (string t=""){
+            time=t;
+        }
+        void setReserveNum(){
+            int a,b,c,d;
+            a=(rand()%5+1)*1000;
+            b=(rand()%3+1)*100;
+            c=(rand()%5)*10;
+            d=rand()%2+1;
+            reservationNum=a+b+c+d;
+        }
+        void setQuantity(int q){
+            quantity=q;
+        }
+        string getDate(){
+            return date;
+        }
+        string getTime(){
+            return time;
+        }
+        int getReserveNum(){
+            return reservationNum;
+        }
+        int getQuantity(){
+            return quantity;
+        }
+
+};
 
 class Customer
 {
@@ -38,14 +81,14 @@ class Customer
         void setIsVIP (bool v) {isVIP = v;}
         bool getIsVIP () {return isVIP;}
 
-        //void setReserveNum (int num) {r.setReserveNum(num);}
-        //int getReserveNum () {return r.getReserveNum();}
+        void setReserveNum (int num) {r.setReserveNum();}
+        int getReserveNum () {return r.getReserveNum();}
 
-        //void setDate (string d) {r.setDate(d);}
-        //string getDate () {return r.getDate();}
+        void setDate (string d) {r.setDate(d);}
+        string getDate () {return r.getDate();}
 
-        //void setTime (string t) {r.setTime(t);}
-        //string getTime () {return r.getTime();}
+        void setTime (string t) {r.setTime(t);}
+        string getTime () {return r.getTime();}
 };
 
 class Meal
@@ -192,3 +235,10 @@ class Dessert: public Meal
         }
 };
 
+int main(){
+    
+    srand(time(NULL)); //recommended to be called in main before any random numbers are generated
+    
+    system("pause");
+    return 0;
+}
