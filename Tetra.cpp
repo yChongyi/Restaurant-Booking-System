@@ -89,6 +89,9 @@ class Customer
 
         void setTime (string t) {r.setTime(t);}
         string getTime () {return r.getTime();}
+
+        void setQuantity(int q){r.setQuantity(q);}
+        int getQuantity(){return r.getQuantity;}
 };
 
 class Meal
