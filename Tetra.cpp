@@ -3,7 +3,7 @@
 //Project Title: Restaurant Booking System
 //Member 1: NG SHU YU A22EC0228
 //Member 2: YEOH CHONG YI A22EC0295
-//Member 3: WONG QIAO YING
+//Member 3: WONG QIAO YING A22EC0118
 //Member 4: NICOLE LIM TZE YEE A22EC0123
 
 #include <iostream>
@@ -239,9 +239,52 @@ class Dessert: public Meal
 };
 
 int main(){
-    
-    srand(time(NULL)); //recommended to be called in main before any random numbers are generated
-    
-    system("pause");
+    char status;
+
+    do
+    {
+        string name, phonenum, date, time;
+        char vip;
+        int quantity;
+        //input name, phonenum, vip status, quantity
+        cout << "Good Day! Welcome to Entitled Western Restaurant." << endl;
+        cout << "Please enter your name: ";
+        getline(cin, name);
+        cout << "Please enter phone number (01X-XXXXXXX): ";
+        cin >> phonenum;
+        cout << "Do you have VIP membership? (Y/N): ";
+        cin >> vip;
+        //set customer info
+        Customer cust(name, phonenum);
+        cust.setIsVIP(vip);
+
+        //input reservation details
+        cout << "Number of pax: ";
+        cin >> quantity;
+        cout << "Date (XX/XX/XXXX): ";
+        cin >> date;
+        cout << "Time (eg: 1400): ";
+        cin >> time;
+        //set reservation indo
+        Reservation res(date, time);
+        res.setReserveNum;
+
+        //set course
+        int course;
+        do{
+            cout << "Enter your prefered course price (RM150/200/250): ";
+            cin >> course;
+        }while(course != 150 && course != 200 && course != 250)
+        Meal meaal(course);
+
+       if(meaal.getCourse() == 150)
+       {
+            cout << ""
+       }
+
+        srand(time(NULL)); // recommended to be called in main before any random numbers are generated
+    } while (status = 'y' || status = 'Y')
+
+        system("pause");
     return 0;
 }
