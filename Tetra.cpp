@@ -158,6 +158,16 @@ class Appetizer: public Meal
         {
             return "Appetizer";
         }
+
+        void displayAppMenu() const
+        {
+            if(course == 150)
+                cout << "1. Caesar Salad\n2. Garlic Bread\n3. Soup of the day";
+            else if(course == 200)
+                cout << "1. Caprese Salad\n2. Shrimp Cocktail\n3. Bruschetta";
+            else  
+                cout << "1. Escargots in Garlic Butter\n2. Lobster Bisque\n3. Baked Brie with Cranberry Chutney";
+        }
 };
 
 class Entree: public Meal
@@ -196,6 +206,22 @@ class Entree: public Meal
         string getDescription() const
         {
             return "Entree";
+        }
+
+        void displayEntMenu() const
+        {
+            if(course == 150)
+                cout << "1. Grilled Chicken Breast with Mashed Potatoes and Seasonal Vegetables
+                        \n2. Spaghetti Carbonara
+                        \n3. Fish and Chips with Tartar Sauce";
+            else if(course == 200)
+                cout << "1. Grilled Ribeye Steak with Roasted Potatoes and Grilled Asparagus
+                        \n2. Pan-Seared Salmon with Lemon Butter Sauce
+                        \n3. Vegetarian Pasta Primavera";
+            else  
+                cout << "1. Filet Mignon with Truffle Mashed Potatoes and Grilled Vegetables
+                        \n2. Grilled Sea Bass with Lemon Caper Sauce
+                        \n3. Chicken Parmesan with Spaghetti Marinara";
         }
 };
 
@@ -276,13 +302,13 @@ int main(){
         do{
             cout << "Enter your prefered course price (RM150/200/250): ";
             cin >> course;
-        }while(course != 150 && course != 200 && course != 250)
+        }while(course != 150 && course != 200 && course != 250);
         //set course price
         Meal meaal(course);
 
        
         srand(time(NULL)); // recommended to be called in main before any random numbers are generated
-    } while (status = 'y' || status = 'Y')
+    } while (status == 'y' || status == 'Y')
 
         system("pause");
     return 0;
