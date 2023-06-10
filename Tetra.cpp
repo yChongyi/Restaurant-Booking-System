@@ -161,11 +161,11 @@ class Appetizer: public Meal
 
         void displayAppMenu() const
         {
-            if(course == 150)
+            if(course == 100)
                 cout << "1. Caesar Salad
                         \n2. Garlic Bread
                         \n3. Soup of the day";
-            else if(course == 200)
+            else if(course == 150)
                 cout << "1. Caprese Salad
                         \n2. Shrimp Cocktail
                         \n3. Bruschetta";
@@ -216,11 +216,11 @@ class Entree: public Meal
 
         void displayEntMenu() const
         {
-            if(course == 150)
+            if(course == 100)
                 cout << "1. Grilled Chicken Breast with Mashed Potatoes and Seasonal Vegetables
                         \n2. Spaghetti Carbonara
                         \n3. Fish and Chips with Tartar Sauce";
-            else if(course == 200)
+            else if(course == 150)
                 cout << "1. Grilled Ribeye Steak with Roasted Potatoes and Grilled Asparagus
                         \n2. Pan-Seared Salmon with Lemon Butter Sauce
                         \n3. Vegetarian Pasta Primavera";
@@ -271,11 +271,11 @@ class Dessert: public Meal
 
         void displayAppMenu() const
         {
-            if(course == 150)
+            if(course == 100)
                 cout << "1. Chocolate Brownie with Vanilla Ice Cream
                         \n2. Fresh Fruit Salad
                         \n3. Crème Brûlée";
-            else if(course == 200)
+            else if(course == 150)
                 cout << "1. New York Cheesecake with Raspberry Sauce
                         \n2. Tiramisu
                         \n3. Apple Pie with Vanilla Sauce";
