@@ -279,7 +279,8 @@ int main(){
 
        if(meaal.getCourse() == 150)
        {
-            cout << ""
+            
+            cout << "Code | Food Name"
        }
 
         srand(time(NULL)); // recommended to be called in main before any random numbers are generated
