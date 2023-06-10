@@ -269,20 +269,16 @@ int main(){
         Reservation res(date, time);
         res.setReserveNum;
 
-        //set course
+        //input course price
         int course;
         do{
             cout << "Enter your prefered course price (RM150/200/250): ";
             cin >> course;
         }while(course != 150 && course != 200 && course != 250)
+        //set course price
         Meal meaal(course);
 
-       if(meaal.getCourse() == 150)
-       {
-            
-            cout << "Code | Food Name"
-       }
-
+       
         srand(time(NULL)); // recommended to be called in main before any random numbers are generated
     } while (status = 'y' || status = 'Y')
 
