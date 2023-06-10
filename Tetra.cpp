@@ -243,17 +243,19 @@ int main(){
 
     do
     {
+        //input name, phonenum, vip status, quantity
         string name, phonenum, date, time;
         char vip;
         int quantity;
-        //input name, phonenum, vip status, quantity
         cout << "Good Day! Welcome to Entitled Western Restaurant." << endl;
         cout << "Please enter your name: ";
         getline(cin, name);
         cout << "Please enter phone number (01X-XXXXXXX): ";
         cin >> phonenum;
+
         cout << "Do you have VIP membership? (Y/N): ";
         cin >> vip;
+        toupper(vip);
         //set customer info
         Customer cust(name, phonenum);
         cust.setIsVIP(vip);
