@@ -291,7 +291,7 @@ int main(){
 
     do
     {
-        //input name, phonenum, vip status, quantity
+        //input customer info
         string name, phonenum, date, time;
         char vip;
         int quantity;
@@ -300,14 +300,9 @@ int main(){
         getline(cin, name);
         cout << "Please enter phone number (01X-XXXXXXX): ";
         cin >> phonenum;
-
         cout << "Do you have VIP membership? (Y/N): ";
         cin >> vip;
         toupper(vip);
-        //set customer info
-        Customer cust(name, phonenum);
-        cust.setIsVIP(vip);
-
         //input reservation details
         cout << "Number of pax: ";
         cin >> quantity;
@@ -315,10 +310,15 @@ int main(){
         cin >> date;
         cout << "Time (eg: 1400): ";
         cin >> time;
-        //set reservation indo
-        Reservation res(date, time);
-        res.setReserveNum;
-
+        bool isVIP;
+        if(vip == 'y' || vip == 'Y') isVIP = 1; else isVIP = 0;
+        //set customer and reservation info
+        Customer cust(name, phonenum, isVIP);
+        cust.setReserveNum();
+        cust.setQuantity(quantity);
+        cust.setDate(date);
+        cust.setTime(time);
+       
         //input course price
         int course;
         do{
