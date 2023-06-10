@@ -162,11 +162,17 @@ class Appetizer: public Meal
         void displayAppMenu() const
         {
             if(course == 150)
-                cout << "1. Caesar Salad\n2. Garlic Bread\n3. Soup of the day";
+                cout << "1. Caesar Salad
+                        \n2. Garlic Bread
+                        \n3. Soup of the day";
             else if(course == 200)
-                cout << "1. Caprese Salad\n2. Shrimp Cocktail\n3. Bruschetta";
+                cout << "1. Caprese Salad
+                        \n2. Shrimp Cocktail
+                        \n3. Bruschetta";
             else  
-                cout << "1. Escargots in Garlic Butter\n2. Lobster Bisque\n3. Baked Brie with Cranberry Chutney";
+                cout << "1. Escargots in Garlic Butter
+                        \n2. Lobster Bisque
+                        \n3. Baked Brie with Cranberry Chutney";
         }
 };
 
@@ -261,6 +267,22 @@ class Dessert: public Meal
         string getDescription() const
         {
             return "Dessert";
+        }
+
+        void displayAppMenu() const
+        {
+            if(course == 150)
+                cout << "1. Chocolate Brownie with Vanilla Ice Cream
+                        \n2. Fresh Fruit Salad
+                        \n3. Crème Brûlée";
+            else if(course == 200)
+                cout << "1. New York Cheesecake with Raspberry Sauce
+                        \n2. Tiramisu
+                        \n3. Apple Pie with Vanilla Sauce";
+            else  
+                cout << "1. Molten Chocolate Lava Cake with Vanilla Bean Ice Cream
+                        \n2. Crème Brûlée Trio (Vanilla, Chocolate, and Coffee)
+                        \n3. Berry Pavlova with Whipped Cream";
         }
 };
 
