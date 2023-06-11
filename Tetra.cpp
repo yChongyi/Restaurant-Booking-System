@@ -151,13 +151,9 @@ class Appetizer: public Meal
             return appName;
         }
 
-        string getDescription() const
-        {
-            return "Appetizer";
-        }
-
         void displayMenu() 
         {
+            cout<<"Appetizer:"<<endl;
             if(course == 100)
                 cout << "1. Caesar Salad"
                <<endl<< "2. Garlic Bread"
@@ -206,13 +202,9 @@ class Entree: public Meal
             return entName;
         }
 
-        string getDescription() const
-        {
-            return "Entree";
-        }
-
         void displayMenu() 
         {
+            cout<<"Entree:"<<endl;
             if(course == 100)
                 cout << "1. Grilled Chicken Breast with Mashed Potatoes and Seasonal Vegetables"
                <<endl<< "2. Spaghetti Carbonara"
@@ -261,13 +253,9 @@ class Dessert: public Meal
             return dessName;
         }
 
-        string getDescription() const
-        {
-            return "Dessert";
-        }
-
         void displayMenu() 
         {
+            cout<<"Dessert:"<<endl;
             if(course == 100)
                 cout << "1. Chocolate Brownie with Vanilla Ice Cream"
                <<endl<< "2. Fresh Fruit Salad"
