@@ -4,7 +4,9 @@
         "string": "cpp",
         "istream": "cpp",
         "ostream": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "system_error": "cpp",
+        "typeinfo": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

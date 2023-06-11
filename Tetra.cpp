@@ -1,10 +1,10 @@
-//Programming Technique II - Group Project
-//Group: Tetra
-//Project Title: Restaurant Booking System
-//Member 1: NG SHU YU A22EC0228
-//Member 2: YEOH CHONG YI A22EC0295
-//Member 3: WONG QIAO YING A22EC0118
-//Member 4: NICOLE LIM TZE YEE A22EC0123
+// Programming Technique II - Group Project
+// Group: Tetra
+// Project Title: Restaurant Booking System
+// Member 1: NG SHU YU A22EC0228
+// Member 2: YEOH CHONG YI A22EC0295
+// Member 3: WONG QIAO YING A22EC0118
+// Member 4: NICOLE LIM TZE YEE A22EC0123
 
 #include <iostream>
 #include <iomanip>
@@ -14,309 +14,322 @@ using namespace std;
 
 class Reservation
 {
-    private:
-        int reservationNum;
-        string date, time;
-        int quantity;
+private:
+    int reservationNum;
+    string date, time;
+    int quantity;
 
-    public:
-        Reservation (string d="", string t="", int rn=0){
-            date=d;
-            time=t;
-            reservationNum=rn;
-        }
-        void setDate (string d=""){
-            date=d;
-        }
-        void setTime (string t=""){
-            time=t;
-        }
-        void setReserveNum(){
-            int a,b,c,d;
-            a=(rand()%5+1)*1000;
-            b=(rand()%3+1)*100;
-            c=(rand()%5)*10;
-            d=rand()%2+1;
-            reservationNum=a+b+c+d;
-        }
-        void setQuantity(int q){
-            quantity=q;
-        }
-        string getDate(){
-            return date;
-        }
-        string getTime(){
-            return time;
-        }
-        int getReserveNum(){
-            return reservationNum;
-        }
-        int getQuantity(){
-            return quantity;
-        }
+public:
+    Reservation(string d = "", string t = "", int rn = 0)
+    {
+        date = d;
+        time = t;
+        reservationNum = rn;
+    }
+    void setDate(string d = "") { date = d; }
+    string getDate() { return date; }
 
+    void setTime(string t = "") { time = t; }
+    string getTime() { return time; }
+
+    void setReserveNum()
+    {
+        int a, b, c, d;
+        a = (rand() % 5 + 1) * 1000;
+        b = (rand() % 3 + 1) * 100;
+        c = (rand() % 5) * 10;
+        d = rand() % 2 + 1;
+        reservationNum = a + b + c + d;
+    }
+    int getReserveNum() { return reservationNum; }
+
+    void setQuantity(int q) { quantity = q; }
+    int getQuantity() { return quantity; }
 };
 
 class Customer
 {
-    private:
-        string name;
-        string phone;
-        bool isVIP;
+private:
+    string name;
+    string phone;
+    bool isVIP;
 
-    public:
-        Reservation r;
-        Customer (string n="", string p="", bool v=false)
-        {
-            name = n;
-            phone = p;
-            isVIP = v;
-        }
-        void setName (string n) {name = n;}
-        string getName () {return name;}
+public:
+    Reservation r;
 
-        void setPhone (string p) {phone = p;}
-        string getPhone () {return phone;}
+    Customer(string n = "", string p = "", bool v = false)
+    {
+        name = n;
+        phone = p;
+        isVIP = v;
+    }
 
-        void setIsVIP (bool v) {isVIP = v;}
-        bool getIsVIP () {return isVIP;}
+    void setName(string n) { name = n; }
+    string getName() { return name; }
 
-        void setReserveNum () {r.setReserveNum();}
-        int getReserveNum () {return r.getReserveNum();}
+    void setPhone(string p) { phone = p; }
+    string getPhone() { return phone; }
 
-        void setDate (string d) {r.setDate(d);}
-        string getDate () {return r.getDate();}
+    void setIsVIP(bool v) { isVIP = v; }
+    bool getIsVIP() { return isVIP; }
 
-        void setTime (string t) {r.setTime(t);}
-        string getTime () {return r.getTime();}
+    void setReserveNum() { r.setReserveNum(); }
+    int getReserveNum() { return r.getReserveNum(); }
 
-        void setQuantity(int q){r.setQuantity(q);}
-        int getQuantity(){return r.getQuantity();}
+    void setDate(string d) { r.setDate(d); }
+    string getDate() { return r.getDate(); }
+
+    void setTime(string t) { r.setTime(t); }
+    string getTime() { return r.getTime(); }
+
+    void setQuantity(int q) { r.setQuantity(q); }
+    int getQuantity() { return r.getQuantity(); }
 };
 
 class Meal
 {
-    protected:
-        int course;
-    
-    public:
-        Meal(int c)
-        {
-            course = c;
-        }
+protected:
+    int course;
 
-        void setCourse(int c)
-        {
-            course = c;
-        }
+public:
+    Meal(int c) { course = c; }
 
-        int getCourse() const
-        {
-            return course;
-        }
+    void setCourse(int c) { course = c; }
+    int getCourse() const { return course; }
 
-        virtual void displayMenu(){}
+    virtual void displayMenu() { return 0; }
+    virtual void setCode() {}
+    virtual int getCode() {}
+    virtual void setName() {}
+    virtual string getName() {}
 };
 
-class Appetizer: public Meal
+class Appetizer : public Meal
 {
-    private:
-        int appCode;
-        string appName;
+private:
+    int appCode;
+    string appName;
+    string app100[3] = {"Caesar Salad", "Garlic Bread", "Soup of the Day"};
+    string app150[3] = {"Caprese Salad", "Shrimp Cocktail", "Bruschetta"};
+    string app200[3] = {"Escargots in Garlic Butter", "Lobster Bisque", "Baked Brie with Cranberry Chutney"};
 
-    public:
-        Appetizer(int c, int code, string name) : Meal(c)
+public:
+    Appetizer(int c, int code) : Meal(c) { appCode = code; }
+
+    void setCode(int code) { appCode = code; }
+    int getCode() const { return appCode; }
+
+    void setName(string name) { appName = name; }
+    string getName() const { return appName; }
+
+    void displayMenu() const
+    {
+        if (course == 100)
         {
-            appCode = code;
-            appName = name;
+            for (int i = 0; i < 3; i++)
+                cout << "\t" << i + 1 << ". " << app100[i] << endl;
         }
-
-        void setAppMenuCode(int code)
+        else if (course == 150)
         {
-            appCode = code;
+            for (int i = 0; i < 3; i++)
+                cout << "\t" << i + 1 << ". " << app150[i] << endl;
         }
-
-        void setAppName(string name)
+        else
         {
-            appName = name;
+            for (int i = 0; i < 3; i++)
+                cout << "\t" << i + 1 << ". " << app200[i] << endl;
         }
+    };
 
-        int getAppMenuCode() const
-        {
-            return appCode;
-        }
-
-        string getAppName() const
-        {
-            return appName;
-        }
-
-        void displayMenu() 
-        {
-            cout<<"Appetizer:"<<endl;
-            if(course == 100)
-                cout << "1. Caesar Salad"
-               <<endl<< "2. Garlic Bread"
-               <<endl<< "3. Soup of the day";
-            else if(course == 150)
-                cout << "1. Caprese Salad"
-               <<endl<< "2. Shrimp Cocktail"
-               <<endl<< "3. Bruschetta";
-            else  
-                cout << "1. Escargots in Garlic Butter"
-               <<endl<< "2. Lobster Bisque"
-               <<endl<< "3. Baked Brie with Cranberry Chutney";
-        }
-};
-
-class Entree: public Meal
-{
+    class Entree : public Meal
+    {
     private:
         int entCode;
         string entName;
+        string ent100[3] = {"Grilled Chicken Breast", "Spaghetti Carbonara", "Fish and Chips with Tartar Sauce"};
+        string ent150[3] = {"Grilled Ribeye Steak with Grilled Asparagus", "Pan-Seared Salmon with Lemon Butter Sauce", "Vegetarian Pasta Primavera"};
+        string ent200[3] = {"Filet Mignon with Truffle Mashed Potatoes", "Grilled Sea Bass with Lemon Caper Sauce", "Chicken Parmesan with Spaghetti Marinara"};
 
     public:
-        Entree(int c, int code, string name) : Meal(c)
+        Entree(int c, int code) : Meal(c)
         {
             entCode = code;
             entName = name;
         }
 
-        void setEntCode(int code)
+        void setCode(int code)
         {
             entCode = code;
         }
 
-        void setEntName(string name)
+        void setName(string name)
         {
             entName = name;
         }
 
-        int getEntCode() const
+        int getCode() const
         {
             return entCode;
         }
 
-        string getEntName() const
+        string getName() const
         {
             return entName;
         }
 
-        void displayMenu() 
+        void displayMenu() const
         {
-            cout<<"Entree:"<<endl;
-            if(course == 100)
-                cout << "1. Grilled Chicken Breast with Mashed Potatoes and Seasonal Vegetables"
-               <<endl<< "2. Spaghetti Carbonara"
-               <<endl<< "3. Fish and Chips with Tartar Sauce";
-            else if(course == 150)
-                cout << "1. Grilled Ribeye Steak with Roasted Potatoes and Grilled Asparagus"
-               <<endl<< "2. Pan-Seared Salmon with Lemon Butter Sauce"
-               <<endl<< "3. Vegetarian Pasta Primavera";
-            else  
-                cout << "1. Filet Mignon with Truffle Mashed Potatoes and Grilled Vegetables"
-               <<endl<< "2. Grilled Sea Bass with Lemon Caper Sauce"
-               <<endl<< "3. Chicken Parmesan with Spaghetti Marinara";
-        }
-};
 
-class Dessert: public Meal
-{
+            if (course == 100)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    cout << "\t" << i + 1 << ". " << ent100[i] << endl;
+                }
+            }
+            else if (course == 150)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    cout << "\t" << i + 1 << ". " << ent150[i] << endl;
+                }
+            }
+            else if (course == 200)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    cout << "\t" << i + 1 << ". " << ent200[i] << endl;
+                }
+            }
+        }
+    };
+
+    class Dessert : public Meal
+    {
     private:
         int dessCode;
         string dessName;
+        string set100[3] = {"Chocolate Brownie with Vanilla Ice Cream", "Fresh Fruit Salad", "Crème Brûlée"};
+        string set150[3] = {"New York Cheesecake with Raspberry Sauce", "Tiramisu", "Apple Pie with Vanilla Sauce"};
+        string set200[3] = {"Molten Chocolate Lava Cake with Vanilla Bean Ice Cream", "Crème Brûlée Trio (Vanilla, Chocolate, and Coffee)", "Berry Pavlova with Whipped Cream"};
 
     public:
-        Dessert(int c, int code, string name) : Meal(c)
-        {
-            dessCode = code;
-            dessName = name;
-        }
-
-        void setDessCode(int code)
+        Dessert(int c, int code) : Meal(c)
         {
             dessCode = code;
         }
 
-        void setDessName(string name)
+        void setCode(int code)
         {
-            dessName = name;
+            dessCode = code;
         }
 
-        int getDessCode() const
+        void setName()
+        {
+           if()
+        }
+
+        int getCode() const
         {
             return dessCode;
         }
 
-        string getDessName() const
+        string getName() const
         {
             return dessName;
         }
 
-        void displayMenu() 
+        void displayMenu() const
         {
-            cout<<"Dessert:"<<endl;
-            if(course == 100)
-                cout << "1. Chocolate Brownie with Vanilla Ice Cream"
-               <<endl<< "2. Fresh Fruit Salad"
-               <<endl<< "3. Crème Brûlée";
-            else if(course == 150)
-                cout << "1. New York Cheesecake with Raspberry Sauce"
-               <<endl<< "2. Tiramisu"
-               <<endl<< "3. Apple Pie with Vanilla Sauce";
-            else  
-                cout << "1. Molten Chocolate Lava Cake with Vanilla Bean Ice Cream"
-               <<endl<< "2. Crème Brûlée Trio (Vanilla, Chocolate, and Coffee)"
-               <<endl<< "3. Berry Pavlova with Whipped Cream";
+            if (course == 100)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    cout << "\t" << i + 1 << ". " << set100[i] << endl;
+                }
+            }
+            else if (course == 150)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    cout << "\t" << i + 1 << ". " << set150[i] << endl;
+                }
+            }
+            else if (course == 200)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    cout << "\t" << i + 1 << ". " << set200[i] << endl;
+                }
+            }
         }
-};
+    };
 
-int main(){
-    srand(time(NULL)); // recommended to be called in main before any random numbers are generated
-    char status;
-
-    do
+    int main()
     {
-        //input customer info
-        string name, phonenum, date, time;
-        char vip;
-        int quantity;
-        cout << "Good Day! Welcome to Entitled Western Restaurant." << endl;
-        cout << "Please enter your name: ";
-        getline(cin, name);
-        cout << "Please enter phone number (01X-XXXXXXX): ";
-        cin >> phonenum;
-        cout << "Do you have VIP membership? (Y/N): ";
-        cin >> vip;
-        toupper(vip);
-        //input reservation details
-        cout << "Number of pax: ";
-        cin >> quantity;
-        cout << "Date (XX/XX/XXXX): ";
-        cin >> date;
-        cout << "Time (eg: 1400): ";
-        cin >> time;
-        bool isVIP;
-        if(vip == 'y' || vip == 'Y') isVIP = 1; else isVIP = 0;
-        //set customer and reservation info
-        Customer cust(name, phonenum, isVIP);
-        cust.setReserveNum();
-        cust.setQuantity(quantity);
-        cust.setDate(date);
-        cust.setTime(time);
-       
-        //input course price
-        int course;
-        do{
-            cout << "Enter your prefered course price (RM150/200/250): ";
-            cin >> course;
-        }while(course != 150 && course != 200 && course != 250);
-        //set course price
-        Meal meaal(course);
+        srand(time(NULL)); // recommended to be called in main before any random numbers are generated
+        char status;
 
-       
-    } while (status == 'y' || status == 'Y');
+        do
+        {
+            // input customer info
+            string name, phonenum, date, time;
+            char vip;
+            int quantity;
+            cout << "Good Day! Welcome to Entitled Western Restaurant." << endl;
+            cout << "Please enter your name: ";
+            getline(cin, name);
+            cout << "Please enter phone number (01X-XXXXXXX): ";
+            cin >> phonenum;
+            cout << "Do you have VIP membership? (Y/N): ";
+            cin >> vip;
+            toupper(vip);
+            // input reservation details
+            cout << "Number of pax: ";
+            cin >> quantity;
+            cout << "Date (XX/XX/XXXX): ";
+            cin >> date;
+            cout << "Time (eg: 1400): ";
+            cin >> time;
+            bool isVIP;
+            if (vip == 'y' || vip == 'Y')
+                isVIP = 1;
+            else
+                isVIP = 0;
+            // set customer and reservation info
+            Customer cust(name, phonenum, isVIP);
+            cust.setReserveNum();       // generate reservation num
+            cust.setQuantity(quantity); // set reservation pax
+            cust.setDate(date);         // set reservation date
+            cust.setTime(time);         // set reservation time
 
-    system("pause");
-    return 0;
-}
+            // input course price
+            int course;
+            do
+            {
+                cout << "Enter your prefered course price (RM150/200/250): ";
+                cin >> course;
+            } while (course != 150 && course != 200 && course != 250);
+            // set course price
+            Appetizer a;
+            Entree e;
+            Dessert d;
+            Meal *list[3] = {&a, &e, &d};
+            int code;
+            for (int i = 0; i < 3; i++)
+            {
+                cout << list[i]->displayMenu();
+                cout << "Enter 1-3 to confirm your choice: ";
+                do
+                {
+                    cin >> code;
+                    if (code != 1 && code != 2 && code != 3)
+                        cout << "Invalid input, please try again: "
+                }while (code != 1 && code != 2 && code != 3);
+                list[i] -> setCode(code);
+            }
+        } while (status == 'y' || status == 'Y');
+
+        system("pause");
+        return 0;
+    }
