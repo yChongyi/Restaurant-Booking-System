@@ -272,6 +272,7 @@ class Dessert: public Meal
 };
 
 int main(){
+    srand(time(NULL)); // recommended to be called in main before any random numbers are generated
     char status;
 
     do
@@ -314,9 +315,8 @@ int main(){
         Meal meaal(course);
 
        
-        srand(time(NULL)); // recommended to be called in main before any random numbers are generated
     } while (status == 'y' || status == 'Y');
 
-        system("pause");
+    system("pause");
     return 0;
 }
