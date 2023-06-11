@@ -3,7 +3,7 @@
 //Project Title: Restaurant Booking System
 //Member 1: NG SHU YU A22EC0228
 //Member 2: YEOH CHONG YI A22EC0295
-//Member 3: WONG QIAO YING
+//Member 3: WONG QIAO YING A22EC0118
 //Member 4: NICOLE LIM TZE YEE A22EC0123
 
 #include <iostream>
@@ -81,7 +81,7 @@ class Customer
         void setIsVIP (bool v) {isVIP = v;}
         bool getIsVIP () {return isVIP;}
 
-        void setReserveNum (int num) {r.setReserveNum();}
+        void setReserveNum () {r.setReserveNum();}
         int getReserveNum () {return r.getReserveNum();}
 
         void setDate (string d) {r.setDate(d);}
@@ -89,6 +89,9 @@ class Customer
 
         void setTime (string t) {r.setTime(t);}
         string getTime () {return r.getTime();}
+
+        void setQuantity(int q){r.setQuantity(q);}
+        int getQuantity(){return r.getQuantity();}
 };
 
 class Meal
@@ -112,10 +115,7 @@ class Meal
             return course;
         }
 
-        string getDescription() const
-        {
-            return "Meal";
-        }
+        virtual void displayMenu(){}
 };
 
 class Appetizer: public Meal
@@ -151,9 +151,21 @@ class Appetizer: public Meal
             return appName;
         }
 
-        string getDescription() const
+        void displayMenu() 
         {
-            return "Appetizer";
+            cout<<"Appetizer:"<<endl;
+            if(course == 100)
+                cout << "1. Caesar Salad"
+               <<endl<< "2. Garlic Bread"
+               <<endl<< "3. Soup of the day";
+            else if(course == 150)
+                cout << "1. Caprese Salad"
+               <<endl<< "2. Shrimp Cocktail"
+               <<endl<< "3. Bruschetta";
+            else  
+                cout << "1. Escargots in Garlic Butter"
+               <<endl<< "2. Lobster Bisque"
+               <<endl<< "3. Baked Brie with Cranberry Chutney";
         }
 };
 
@@ -190,9 +202,21 @@ class Entree: public Meal
             return entName;
         }
 
-        string getDescription() const
+        void displayMenu() 
         {
-            return "Entree";
+            cout<<"Entree:"<<endl;
+            if(course == 100)
+                cout << "1. Grilled Chicken Breast with Mashed Potatoes and Seasonal Vegetables"
+               <<endl<< "2. Spaghetti Carbonara"
+               <<endl<< "3. Fish and Chips with Tartar Sauce";
+            else if(course == 150)
+                cout << "1. Grilled Ribeye Steak with Roasted Potatoes and Grilled Asparagus"
+               <<endl<< "2. Pan-Seared Salmon with Lemon Butter Sauce"
+               <<endl<< "3. Vegetarian Pasta Primavera";
+            else  
+                cout << "1. Filet Mignon with Truffle Mashed Potatoes and Grilled Vegetables"
+               <<endl<< "2. Grilled Sea Bass with Lemon Caper Sauce"
+               <<endl<< "3. Chicken Parmesan with Spaghetti Marinara";
         }
 };
 
@@ -229,16 +253,70 @@ class Dessert: public Meal
             return dessName;
         }
 
-        string getDescription() const
+        void displayMenu() 
         {
-            return "Dessert";
+            cout<<"Dessert:"<<endl;
+            if(course == 100)
+                cout << "1. Chocolate Brownie with Vanilla Ice Cream"
+               <<endl<< "2. Fresh Fruit Salad"
+               <<endl<< "3. Crème Brûlée";
+            else if(course == 150)
+                cout << "1. New York Cheesecake with Raspberry Sauce"
+               <<endl<< "2. Tiramisu"
+               <<endl<< "3. Apple Pie with Vanilla Sauce";
+            else  
+                cout << "1. Molten Chocolate Lava Cake with Vanilla Bean Ice Cream"
+               <<endl<< "2. Crème Brûlée Trio (Vanilla, Chocolate, and Coffee)"
+               <<endl<< "3. Berry Pavlova with Whipped Cream";
         }
 };
 
 int main(){
-    
-    srand(time(NULL)); //recommended to be called in main before any random numbers are generated
-    
-    system("pause");
+    char status;
+
+    do
+    {
+        //input customer info
+        string name, phonenum, date, time;
+        char vip;
+        int quantity;
+        cout << "Good Day! Welcome to Entitled Western Restaurant." << endl;
+        cout << "Please enter your name: ";
+        getline(cin, name);
+        cout << "Please enter phone number (01X-XXXXXXX): ";
+        cin >> phonenum;
+        cout << "Do you have VIP membership? (Y/N): ";
+        cin >> vip;
+        toupper(vip);
+        //input reservation details
+        cout << "Number of pax: ";
+        cin >> quantity;
+        cout << "Date (XX/XX/XXXX): ";
+        cin >> date;
+        cout << "Time (eg: 1400): ";
+        cin >> time;
+        bool isVIP;
+        if(vip == 'y' || vip == 'Y') isVIP = 1; else isVIP = 0;
+        //set customer and reservation info
+        Customer cust(name, phonenum, isVIP);
+        cust.setReserveNum();
+        cust.setQuantity(quantity);
+        cust.setDate(date);
+        cust.setTime(time);
+       
+        //input course price
+        int course;
+        do{
+            cout << "Enter your prefered course price (RM150/200/250): ";
+            cin >> course;
+        }while(course != 150 && course != 200 && course != 250);
+        //set course price
+        Meal meaal(course);
+
+       
+        srand(time(NULL)); // recommended to be called in main before any random numbers are generated
+    } while (status == 'y' || status == 'Y');
+
+        system("pause");
     return 0;
 }
