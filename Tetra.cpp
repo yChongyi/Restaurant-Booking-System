@@ -81,7 +81,7 @@ class Customer
         void setIsVIP (bool v) {isVIP = v;}
         bool getIsVIP () {return isVIP;}
 
-        void setReserveNum (int num) {r.setReserveNum();}
+        void setReserveNum () {r.setReserveNum();}
         int getReserveNum () {return r.getReserveNum();}
 
         void setDate (string d) {r.setDate(d);}
@@ -115,10 +115,7 @@ class Meal
             return course;
         }
 
-        string getDescription() const
-        {
-            return "Meal";
-        }
+        virtual void displayMenu(){}
 };
 
 class Appetizer: public Meal
@@ -159,20 +156,20 @@ class Appetizer: public Meal
             return "Appetizer";
         }
 
-        void displayAppMenu() const
+        void displayMenu() 
         {
             if(course == 100)
-                cout << "1. Caesar Salad
-                        \n2. Garlic Bread
-                        \n3. Soup of the day";
+                cout << "1. Caesar Salad"
+               <<endl<< "2. Garlic Bread"
+               <<endl<< "3. Soup of the day";
             else if(course == 150)
-                cout << "1. Caprese Salad
-                        \n2. Shrimp Cocktail
-                        \n3. Bruschetta";
+                cout << "1. Caprese Salad"
+               <<endl<< "2. Shrimp Cocktail"
+               <<endl<< "3. Bruschetta";
             else  
-                cout << "1. Escargots in Garlic Butter
-                        \n2. Lobster Bisque
-                        \n3. Baked Brie with Cranberry Chutney";
+                cout << "1. Escargots in Garlic Butter"
+               <<endl<< "2. Lobster Bisque"
+               <<endl<< "3. Baked Brie with Cranberry Chutney";
         }
 };
 
@@ -214,20 +211,20 @@ class Entree: public Meal
             return "Entree";
         }
 
-        void displayEntMenu() const
+        void displayMenu() 
         {
             if(course == 100)
-                cout << "1. Grilled Chicken Breast with Mashed Potatoes and Seasonal Vegetables
-                        \n2. Spaghetti Carbonara
-                        \n3. Fish and Chips with Tartar Sauce";
+                cout << "1. Grilled Chicken Breast with Mashed Potatoes and Seasonal Vegetables"
+               <<endl<< "2. Spaghetti Carbonara"
+               <<endl<< "3. Fish and Chips with Tartar Sauce";
             else if(course == 150)
-                cout << "1. Grilled Ribeye Steak with Roasted Potatoes and Grilled Asparagus
-                        \n2. Pan-Seared Salmon with Lemon Butter Sauce
-                        \n3. Vegetarian Pasta Primavera";
+                cout << "1. Grilled Ribeye Steak with Roasted Potatoes and Grilled Asparagus"
+               <<endl<< "2. Pan-Seared Salmon with Lemon Butter Sauce"
+               <<endl<< "3. Vegetarian Pasta Primavera";
             else  
-                cout << "1. Filet Mignon with Truffle Mashed Potatoes and Grilled Vegetables
-                        \n2. Grilled Sea Bass with Lemon Caper Sauce
-                        \n3. Chicken Parmesan with Spaghetti Marinara";
+                cout << "1. Filet Mignon with Truffle Mashed Potatoes and Grilled Vegetables"
+               <<endl<< "2. Grilled Sea Bass with Lemon Caper Sauce"
+               <<endl<< "3. Chicken Parmesan with Spaghetti Marinara";
         }
 };
 
@@ -269,20 +266,20 @@ class Dessert: public Meal
             return "Dessert";
         }
 
-        void displayAppMenu() const
+        void displayMenu() 
         {
             if(course == 100)
-                cout << "1. Chocolate Brownie with Vanilla Ice Cream
-                        \n2. Fresh Fruit Salad
-                        \n3. Crème Brûlée";
+                cout << "1. Chocolate Brownie with Vanilla Ice Cream"
+               <<endl<< "2. Fresh Fruit Salad"
+               <<endl<< "3. Crème Brûlée";
             else if(course == 150)
-                cout << "1. New York Cheesecake with Raspberry Sauce
-                        \n2. Tiramisu
-                        \n3. Apple Pie with Vanilla Sauce";
+                cout << "1. New York Cheesecake with Raspberry Sauce"
+               <<endl<< "2. Tiramisu"
+               <<endl<< "3. Apple Pie with Vanilla Sauce";
             else  
-                cout << "1. Molten Chocolate Lava Cake with Vanilla Bean Ice Cream
-                        \n2. Crème Brûlée Trio (Vanilla, Chocolate, and Coffee)
-                        \n3. Berry Pavlova with Whipped Cream";
+                cout << "1. Molten Chocolate Lava Cake with Vanilla Bean Ice Cream"
+               <<endl<< "2. Crème Brûlée Trio (Vanilla, Chocolate, and Coffee)"
+               <<endl<< "3. Berry Pavlova with Whipped Cream";
         }
 };
 
@@ -330,7 +327,7 @@ int main(){
 
        
         srand(time(NULL)); // recommended to be called in main before any random numbers are generated
-    } while (status == 'y' || status == 'Y')
+    } while (status == 'y' || status == 'Y');
 
         system("pause");
     return 0;
