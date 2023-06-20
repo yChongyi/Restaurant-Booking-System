@@ -317,7 +317,7 @@ int main()
             
             // Get food code for each class
             int code;
-            string line(15,'-');
+            string line(40,'-');
             for (int i = 0; i < 3; i++)
             {
                 cout << line << endl;
