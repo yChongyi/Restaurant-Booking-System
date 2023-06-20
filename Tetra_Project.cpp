@@ -12,10 +12,17 @@ void line()
     cout << endl;
 }
 
-void sline() 
+void dline() 
 {
     for(int i=0; i<150; i++)
-        cout<<"-";
+        cout<<"`";
+    cout << endl;
+}
+
+void aline() 
+{
+    for(int i=0; i<150; i++)
+        cout<<"*";
     cout << endl;
 }
 
@@ -129,7 +136,7 @@ private:
     Appetizer appetizer8 = Appetizer(56, 8, "Lobster Bisque", "Lobster meat, herbs, spices.");
     Appetizer appetizer9 = Appetizer(38, 9, "Baked Brie with Cranberry Chutney", "Brie cheese, cranberry chutney.");
 
-    Entree entree1 = Entree(26, 10, "Grilled Chicken Breast", "Grilled chicken breast, mashed potatoes, seasonal vegetables.");
+    Entree entree1 = Entree(26, 10, "Grilled Chicken Breast with Mashed Potatoes", "Grilled chicken breast, mashed potatoes, vegetables.");
     Entree entree2 = Entree(22, 11, "Spaghetti Carbonara", "Spaghetti noodles, bacon, eggs, Parmesan cheese.");
     Entree entree3 = Entree(28, 12, "Fish and Chips with Tartar Sauce", "Fish fillets, French fries, tartar sauce.");
     Entree entree4 = Entree(49, 13, "Grilled Ribeye Steak with Grilled Asparagus", "Ribeye steak, potatoes, asparagus.");
@@ -137,17 +144,17 @@ private:
     Entree entree6 = Entree(32, 15, "Vegetarian Pasta Primavera", "Sauteed vegetables, pasta.");
     Entree entree7 = Entree(88, 16, "Filet Mignon with Truffle Mashed Potatoes", "Filet mignon steak, truffle mashed potatoes, vegetables.");
     Entree entree8 = Entree(65, 17, "Grilled Sea Bass with Lemon Caper Sauce", "Sea bass fillet, seafood, lemon and caper sauce.");
-    Entree entree9 = Entree(53, 18, "Chicken Parmesan with Spaghetti Marinara", "Chicken cutlet, marinara sauce and melted cheese, spaghetti.");
+    Entree entree9 = Entree(53, 18, "Chicken Parmesan with Spaghetti Marinara", "Chicken cutlet, marinara sauce, spaghetti.");
 
-    Dessert dessert1 = Dessert(18, 19, "Chocolate Brownie", "Chocolate brownie served with a scoop of vanilla ice cream.");
+    Dessert dessert1 = Dessert(18, 19, "Chocolate Brownie", "Chocolate brownie served with vanilla ice cream.");
     Dessert dessert2 = Dessert(12, 20, "Fresh Fruit Salad", "Seasonal fruits.");
     Dessert dessert3 = Dessert(20, 21, "Creme Brulee", "Custard base topped with a caramelized sugar crust.");
-    Dessert dessert4 = Dessert(23, 22, "New York Cheesecake with Raspberry Sauce", "Cheesecake, cracker crust, raspberry sauce.");
-    Dessert dessert5 = Dessert(21, 23, "Tiramisu", "Coffee-soaked ladyfingers, mascarpone cheese, cocoa powder.");
+    Dessert dessert4 = Dessert(23, 22, "New York Cheesecake", "Cheesecake, cracker crust, raspberry sauce.");
+    Dessert dessert5 = Dessert(21, 23, "Tiramisu", "Coffee-soaked ladyfingers, mascarpone cheese, cocoa.");
     Dessert dessert6 = Dessert(23, 24, "Apple Pie", "Pie crust filled with spiced apple slices.");
-    Dessert dessert7 = Dessert(30, 25, "Molten Chocolate Lava Cake", "Chocolate lava cake served with a scoop of vanilla ice cream.");
+    Dessert dessert7 = Dessert(30, 25, "Molten Chocolate Lava Cake", "Chocolate lava cake served with vanilla ice cream.");
     Dessert dessert8 = Dessert(34, 26, "Raspberry White Chocolate Mousse", "Fresh raspberries, white chocolate, whipping cream.");
-    Dessert dessert9 = Dessert(34, 27, "Berry Pavlova with Whipped Cream", "Meringue dessert, fresh berries, whipped cream.");
+    Dessert dessert9 = Dessert(34, 27, "Berry Pavlova", "Meringue dessert, fresh berries, whipped cream.");
 
     Meal *meals[3][9]; //Polymorphism: Array of parent class pointers
 
@@ -192,10 +199,10 @@ public:
         line();
         cout << left;
         cout << "Appetizers: " << endl;
-        sline();
+        dline();
         cout << setw(8) << "Choice " << setw(55) << "Meal" 
              << setw(12) << "Price" << "Description" << endl;
-        sline();
+        dline();
         for (int i = 0; i < 9; i++)
         {
             cout << setw(8) << i + 1 << setw(55) << meals[0][i]->getName() 
@@ -204,10 +211,10 @@ public:
         cout << endl;
         line();
         cout << "Entrees: " << endl;
-        sline();
+        dline();
         cout << setw(8) << "Choice " << setw(55) << "Meal "
              << setw(12) << "Price" << "Description" << endl;
-        sline();
+        dline();
         for (int i = 0; i < 9; i++)
         {
             cout << setw(8) << 9 + i + 1 << setw(55) << meals[1][i]->getName() 
@@ -216,10 +223,10 @@ public:
         cout << endl;
         line();
         cout << "Desserts: " << endl;
-        sline();
+        dline();
         cout << setw(8) << "Choice " << setw(55) << "Meal "
              << setw(12) << "Price" << "Description" << endl;
-        sline();
+        dline();
         for (int i = 0; i < 9; i++)
         {
             cout << setw(8) << 9 + 9 + i + 1 << setw(55) << meals[2][i]->getName() 
@@ -281,7 +288,8 @@ public:
         {
             if (meals[0][i]->getQuantity() > 0)
             {
-                cout << "Appetizers: " << endl;
+                cout << endl
+                     << "Appetizers: " << endl;
                 cout << setw(3) << left << n++ << " " << setw(55) << left << meals[0][i]->getName() << "x"
                      << meals[0][i]->getQuantity() << fixed << setprecision(2)
                      << " RM" << meals[0][i]->getTotalPrice() << endl;
@@ -460,10 +468,10 @@ int main()
         do
         {
             cout << endl;
-            line();
-            cout << "Press 1 to order meal, press 2 to see cart, press 3 to checkout" << endl;
+            aline();
+            cout << "Press 1 to order meal; Press 2 to view cart; Press 3 to checkout" << endl;
             cin >> choice;
-            line();
+            aline();
             switch (choice)
             {
                 case 1:
@@ -479,7 +487,7 @@ int main()
         // Print Summary
         cout << endl << right;
         line();
-        cout << setw(80) << "RESERVATION SUMMARY" << endl;
+        cout << setw(85) << "RESERVATION SUMMARY" << endl;
         line();
         cout << "Reservation Number: " << cust.getReserveNum() << endl;
         cout << "Customer Name: " << cust.getName() << endl;
@@ -489,6 +497,7 @@ int main()
         cout << "Number of Pax: " << cust.getQuantity() << endl;
         custReservation.displayOrderedMeals(cust.getIsVIP());
 
+        cout << endl;
         cout << "Do you wish to make another reservation? (Y/N): ";
         cin >> status;
         cin.ignore();
