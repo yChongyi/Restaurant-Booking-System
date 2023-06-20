@@ -5,6 +5,20 @@
 
 using namespace std;
 
+void line() 
+{
+    for(int i=0; i<150; i++)
+        cout<<"=";
+    cout << endl;
+}
+
+void sline() 
+{
+    for(int i=0; i<150; i++)
+        cout<<"-";
+    cout << endl;
+}
+
 class Meal
 {
 protected:
@@ -38,127 +52,102 @@ public:
 
     virtual string getDescription() const //Polymorphism: Parent class virtual method
     {
-        return "Meal. Name: " + name + ". Price: " + to_string(price);
+        return "";
     }
 };
 
 class Appetizer : public Meal // Inheritance
 {
 private:
-    string category;
+    string appIng;
 
 public:
-    Appetizer(double p, int c, string n, string cat, int q = 0) : Meal(p, c, n, q)
+    Appetizer(double p, int c, string n, string i, int q = 0) : Meal(p, c, n, q)
     {
-        category = cat;
+        appIng = i;
     }
 
-    void setCategory(string cat) { category = cat; }
-    string getCategory() const { return category; }
+    void setAppIng(string i) { appIng = i; }
+    string getAppIng() const { return appIng; }
 
     string getDescription() const //Polymorphism: Child class override method
     {
-        return "Appetizer category: " + category;
+        return "Appetizer ingredient: " + appIng;
     }
 };
 
 class Entree : public Meal // Inheritance
 {
 private:
-    string ingredients;
-    double prepareTimeMinutes;
-    string cuisineType;
-    double calories;
-    string spicinessLevel;
+    string entreeIng;
 
 public:
-    Entree(double p, int c, string n, string ing, double prepareT, string csineType, double calor, string spicyLevel, int q = 0) : Meal(p, c, n, q)
+    Entree(double p, int c, string n, string i, int q = 0) : Meal(p, c, n, q)
     {
-        ingredients = ing;
-        prepareTimeMinutes = prepareT;
-        cuisineType = csineType;
-        calories = calor;
-        spicinessLevel = spicyLevel;
+        entreeIng = i;
     }
 
-    void setIngredients(string ing) { ingredients = ing; }
-    string getIngredients() const { return ingredients; }
-
-    void setPrepareTimeMinutes(double prepareT) { prepareTimeMinutes = prepareT; }
-    double getPrepareTimeMinutes() const { return prepareTimeMinutes; }
-
-    void setCuisineType(string csineType) { cuisineType = csineType; }
-    string getCuisineType() const { return cuisineType; }
-
-    void setCalories(double calor) { calories = calor; }
-    double getCalories() const { return calories; }
-
-    void setSpicinessLevel(string spicyLevel) { spicinessLevel = spicyLevel; }
-    string getSpicinessLevel() const { return spicinessLevel; }
+    void setEntreeIng(string i) { entreeIng = i; }
+    string getEntreeIng() const { return entreeIng; }
 
     string getDescription() const //Polymorphism: Child class override method
     {
-        return "Entree. Name: " + name + ". Price: RM" + to_string(price) + ".\n" + string(66, ' ') + " Ingredients: " + ingredients + ". Time to prepare: " + to_string(prepareTimeMinutes) + " minutes.\n" + string(66, ' ') + " Cuisine type: " + cuisineType + ". Calories: " + to_string(calories) + ". Spiciness level: " + spicinessLevel;
+        return "Entree ingredient: " + entreeIng;
     }
 };
 
 class Dessert : public Meal // Inheritance
 {
 private:
-    string flavour;
-    string texture;
+    string dessIng;
 
 public:
-    Dessert(double p, int c, string n, string flav, string tex, int q = 0) : Meal(p, c, n, q)
+    Dessert(double p, int c, string n, string i, int q = 0) : Meal(p, c, n, q)
     {
-        flavour = flav;
-        texture = tex;
+        dessIng = i;
     }
 
-    void setFlavour(string flav) { flavour = flav; }
-    string getFlavour() const { return flavour; }
-
-    void setTexture(string tex) { texture = tex; }
-    string getTexture() const { return texture; }
+    void setDessIng(string i) { dessIng = i; }
+    string getDessIng() const { return dessIng; }
 
     string getDescription() const //Polymorphism: Child class override method
     {
-        return "Desssert. Name: " + name + ". Price: " + to_string(price) + ".\n" + string(66, ' ') + " Flavour: " + flavour + ". Texture: " + texture;
+        return "Dessert ingredient: " + dessIng;
     }
 };
 
 class OrderedMeals
 {
 private:
-    Appetizer appetizer1 = Appetizer(21, 1, "Caesar Salad", "Salad");
-    Appetizer appetizer2 = Appetizer(15, 2, "Garlic Bread", "Bread");
-    Appetizer appetizer3 = Appetizer(12, 3, "Soup of the Day", "Soup");
-    Appetizer appetizer4 = Appetizer(26, 4, "Caprese Salad", "Salad");
-    Appetizer appetizer5 = Appetizer(42, 5, "Shrimp Cocktail", "Seafood");
-    Appetizer appetizer6 = Appetizer(25, 6, "Bruschetta", "Antipasto");
-    Appetizer appetizer7 = Appetizer(50, 7, "Escargots in Garlic Butter", "Seafood");
-    Appetizer appetizer8 = Appetizer(60, 8, "Lobster Bisque", "Soup");
-    Appetizer appetizer9 = Appetizer(70, 9, "Baked Brie with Cranberry Chutney", "Bread");
+    Appetizer appetizer1 = Appetizer(14, 1, "Caesar Salad", "Crisp romaine lettuce, Caesar dressing, croutons.");
+    Appetizer appetizer2 = Appetizer(9, 2, "Garlic Bread", "Bread toasted with garlic butter.");
+    Appetizer appetizer3 = Appetizer(9, 3, "Soup of the Day", "Daily rotating soup selection.");
+    Appetizer appetizer4 = Appetizer(21, 4, "Caprese Salad", "Mozzarella cheese, tomatoes, basil leaves.");
+    Appetizer appetizer5 = Appetizer(28, 5, "Shrimp Cocktail", "Shrimp, cocktail sauce.");
+    Appetizer appetizer6 = Appetizer(24, 6, "Bruschetta", "Bread, tomatoes, basil.");
+    Appetizer appetizer7 = Appetizer(40, 7, "Escargots in Garlic Butter", "Succulent snails, garlic butter sauce, bread.");
+    Appetizer appetizer8 = Appetizer(56, 8, "Lobster Bisque", "Lobster meat, herbs, spices.");
+    Appetizer appetizer9 = Appetizer(38, 9, "Baked Brie with Cranberry Chutney", "Brie cheese, cranberry chutney.");
 
-    Entree entree1 = Entree(10, 10, "Grilled Chicken Breast", "", 0, "", 0, "");
-    Entree entree2 = Entree(10, 11, "Spaghetti Carbonara", "", 0, "", 0, "");
-    Entree entree3 = Entree(10, 12, "Fish and Chips with Tartar Sauce", "", 0, "", 0, "");
-    Entree entree4 = Entree(10, 13, "Grilled Ribeye Steak with Grilled Asparagus", "", 0, "", 0, "");
-    Entree entree5 = Entree(10, 14, "Pan-Seared Salmon with Lemon Butter Sauce", "", 0, "", 0, "");
-    Entree entree6 = Entree(10, 15, "Vegetarian Pasta Primavera", "", 0, "", 0, "");
-    Entree entree7 = Entree(10, 16, "Filet Mignon with Truffle Mashed Potatoes", "", 0, "", 0, "");
-    Entree entree8 = Entree(10, 17, "Grilled Sea Bass with Lemon Caper Sauce", "", 0, "", 0, "");
-    Entree entree9 = Entree(10, 18, "Chicken Parmesan with Spaghetti Marinara", "", 0, "", 0, "");
+    Entree entree1 = Entree(26, 10, "Grilled Chicken Breast", "Grilled chicken breast, mashed potatoes, seasonal vegetables.");
+    Entree entree2 = Entree(22, 11, "Spaghetti Carbonara", "Spaghetti noodles, bacon, eggs, Parmesan cheese.");
+    Entree entree3 = Entree(28, 12, "Fish and Chips with Tartar Sauce", "Fish fillets, French fries, tartar sauce.");
+    Entree entree4 = Entree(49, 13, "Grilled Ribeye Steak with Grilled Asparagus", "Ribeye steak, potatoes, asparagus.");
+    Entree entree5 = Entree(35, 14, "Pan-Seared Salmon with Lemon Butter Sauce", "Salmon fillet, lemon sauce, vegetables.");
+    Entree entree6 = Entree(32, 15, "Vegetarian Pasta Primavera", "Sauteed vegetables, pasta.");
+    Entree entree7 = Entree(88, 16, "Filet Mignon with Truffle Mashed Potatoes", "Filet mignon steak, truffle mashed potatoes, vegetables.");
+    Entree entree8 = Entree(65, 17, "Grilled Sea Bass with Lemon Caper Sauce", "Sea bass fillet, seafood, lemon and caper sauce.");
+    Entree entree9 = Entree(53, 18, "Chicken Parmesan with Spaghetti Marinara", "Chicken cutlet, marinara sauce and melted cheese, spaghetti.");
 
-    Dessert dessert1 = Dessert(5, 19, "Chocolate Brownie with Vanilla Ice Cream", "", "");
-    Dessert dessert2 = Dessert(5, 20, "Fresh Fruit Salad", "", "");
-    Dessert dessert3 = Dessert(5, 21, "Crème Brûlée", "", "");
-    Dessert dessert4 = Dessert(5, 22, "New York Cheesecake with Raspberry Sauce", "", "");
-    Dessert dessert5 = Dessert(5, 23, "Tiramisu", "", "");
-    Dessert dessert6 = Dessert(5, 24, "Apple Pie with Vanilla Sauce", "", "");
-    Dessert dessert7 = Dessert(5, 25, "Molten Chocolate Lava Cake with Vanilla Bean Ice Cream", "", "");
-    Dessert dessert8 = Dessert(5, 26, "Crème Brûlée Trio (Vanilla, Chocolate, and Coffee)", "", "");
-    Dessert dessert9 = Dessert(5, 27, "Berry Pavlova with Whipped Cream", "", "");
+    Dessert dessert1 = Dessert(18, 19, "Chocolate Brownie", "Chocolate brownie served with a scoop of vanilla ice cream.");
+    Dessert dessert2 = Dessert(12, 20, "Fresh Fruit Salad", "Seasonal fruits.");
+    Dessert dessert3 = Dessert(20, 21, "Creme Brulee", "Custard base topped with a caramelized sugar crust.");
+    Dessert dessert4 = Dessert(23, 22, "New York Cheesecake with Raspberry Sauce", "Cheesecake, cracker crust, raspberry sauce.");
+    Dessert dessert5 = Dessert(21, 23, "Tiramisu", "Coffee-soaked ladyfingers, mascarpone cheese, cocoa powder.");
+    Dessert dessert6 = Dessert(23, 24, "Apple Pie", "Pie crust filled with spiced apple slices.");
+    Dessert dessert7 = Dessert(30, 25, "Molten Chocolate Lava Cake", "Chocolate lava cake served with a scoop of vanilla ice cream.");
+    Dessert dessert8 = Dessert(34, 26, "Raspberry White Chocolate Mousse", "Fresh raspberries, white chocolate, whipping cream.");
+    Dessert dessert9 = Dessert(34, 27, "Berry Pavlova with Whipped Cream", "Meringue dessert, fresh berries, whipped cream.");
 
     Meal *meals[3][9]; //Polymorphism: Array of parent class pointers
 
@@ -197,57 +186,63 @@ public:
     }
 
     void displayMenu()
-    {   cout << left;
+    {   
+        line();
+        cout << setw(77) << "MENU" << endl;
+        line();
+        cout << left;
         cout << "Appetizers: " << endl;
-        cout << setw(7) << "Choice " << setw(60) << "Meal" 
+        sline();
+        cout << setw(8) << "Choice " << setw(55) << "Meal" 
              << setw(12) << "Price" << "Description" << endl;
+        sline();
         for (int i = 0; i < 9; i++)
         {
-            cout << setw(7) << i + 1 << setw(60) << meals[0][i]->getName() 
+            cout << setw(8) << i + 1 << setw(55) << meals[0][i]->getName() 
                  << "RM" << setw(10) << showpoint << fixed << setprecision(2) << meals[0][i]->getPrice() << meals[0][i]->getDescription() << endl;
         }
-
-        cout << endl
-             << "Entrees: " << endl;
-        cout << setw(7) << "Choice " << setw(60) << "Meal "
-             << "Description" << endl;
+        cout << endl;
+        line();
+        cout << "Entrees: " << endl;
+        sline();
+        cout << setw(8) << "Choice " << setw(55) << "Meal "
+             << setw(12) << "Price" << "Description" << endl;
+        sline();
         for (int i = 0; i < 9; i++)
         {
-            cout << setw(7) << left << 9 + i + 1 << setw(60) << left << meals[1][i]->getName() << meals[1][i]->getDescription() << endl;
-        }
-
-        cout << endl
-             << "Desserts: " << endl;
-        cout << setw(7) << "Choice " << setw(60) << "Meal "
-             << "Description" << endl;
-        for (int i = 0; i < 9; i++)
-        {
-            cout << setw(7) << left << 9 + 9 + i + 1 << setw(60) << left << meals[2][i]->getName() << meals[2][i]->getDescription() << endl;
+            cout << setw(8) << 9 + i + 1 << setw(55) << meals[1][i]->getName() 
+                 << "RM" << setw(10) << showpoint << fixed << setprecision(2) << meals[1][i]->getPrice() << meals[1][i]->getDescription() << endl;
         }
         cout << endl;
+        line();
+        cout << "Desserts: " << endl;
+        sline();
+        cout << setw(8) << "Choice " << setw(55) << "Meal "
+             << setw(12) << "Price" << "Description" << endl;
+        sline();
+        for (int i = 0; i < 9; i++)
+        {
+            cout << setw(8) << 9 + 9 + i + 1 << setw(55) << meals[2][i]->getName() 
+                 << "RM" << setw(10) << showpoint << fixed << setprecision(2) << meals[2][i]->getPrice() << meals[2][i]->getDescription() << endl;
+        }
     }
 
     void updateOrder()
     {
-        int choice;
-        int quantity;
-        cout << "Enter the choice of the meal you would like to order: ";
-        cin >> choice;
-        choice = choice - 1;
-        cout << "Enter the quantity of the meal you would like to order (negative number to reduce quantity): ";
-        cin >> quantity;
-        int currentQuantity = meals[choice / 9][choice % 9]->getQuantity();
-        int updatedQuantity = max(currentQuantity + quantity, 0);
-        meals[choice / 9][choice % 9]->setQuantity(updatedQuantity);
-    }
-
-    void displayAndUpdate()
-    {
         bool quit = false;
         while (!quit)
         {
-            displayMenu();
-            updateOrder();
+            int choice;
+            int quantity;
+            cout << "Enter the choice of the meal you would like to order: ";
+            cin >> choice;
+            choice = choice - 1;
+            cout << "Enter the quantity of the meal you would like to order (negative number to reduce quantity): ";
+            cin >> quantity;
+            int currentQuantity = meals[choice / 9][choice % 9]->getQuantity();
+            int updatedQuantity = max(currentQuantity + quantity, 0);
+            meals[choice / 9][choice % 9]->setQuantity(updatedQuantity);
+
             char continueChoice;
             do
             {
@@ -272,45 +267,48 @@ public:
                 overallPrice += meals[i][j]->getTotalPrice();
             }
         }
-        //?vip offer
         return overallPrice;
     }
 
-    void displayOrderedMeals()
+    void displayOrderedMeals(bool v)
     {
-        cout << "Appetizers: " << endl;
+        cout << endl;
+        line();
+        cout << right << setw(77) << "CART" << endl;
+        line();
         int n = 1;
         for (int i = 0; i < 9; i++)
         {
             if (meals[0][i]->getQuantity() > 0)
             {
-                cout << setw(3) << left << n++ << " " << setw(60) << left << meals[0][i]->getName() << "x"
+                cout << "Appetizers: " << endl;
+                cout << setw(3) << left << n++ << " " << setw(55) << left << meals[0][i]->getName() << "x"
                      << meals[0][i]->getQuantity() << fixed << setprecision(2)
                      << " RM" << meals[0][i]->getTotalPrice() << endl;
             }
         }
 
         n = 1;
-        cout << endl
-             << "Entrees: " << endl;
         for (int i = 0; i < 9; i++)
         {
             if (meals[1][i]->getQuantity() > 0)
             {
-                cout << setw(3) << left << n++ << " " << setw(60) << left << meals[1][i]->getName() << "x"
+                cout << endl
+                     << "Entrees: " << endl;
+                cout << setw(3) << left << n++ << " " << setw(55) << left << meals[1][i]->getName() << "x"
                      << meals[1][i]->getQuantity() << fixed << setprecision(2)
                      << " RM" << meals[1][i]->getTotalPrice() << endl;
             }
         }
 
         n = 1;
-        cout << endl
-             << "Desserts: " << endl;
         for (int i = 0; i < 9; i++)
         {
             if (meals[2][i]->getQuantity() > 0)
             {
-                cout << setw(3) << left << n++ << " " << setw(60) << left << meals[2][i]->getName() << "x"
+                cout << endl
+                     << "Desserts: " << endl;
+                cout << setw(3) << left << n++ << " " << setw(55) << left << meals[2][i]->getName() << "x"
                      << meals[2][i]->getQuantity() << fixed << setprecision(2)
                      << " RM" << meals[2][i]->getTotalPrice() << endl;
             }
@@ -318,6 +316,10 @@ public:
         cout << endl;
 
         cout << fixed << setprecision(2) << "Overall Price: RM" << getOverallPrice() << endl;
+        if (v==true)
+        {
+            cout << fixed << setprecision(2) << "VIP Price (10% discount): RM" << getOverallPrice()*0.9 << endl;
+        }
     }
 };
 
@@ -356,8 +358,9 @@ public:
     void setQuantity(int q) {quantity = q;}
     int getQuantity() {return quantity;}
 
-    void order() {orderedMeals.displayAndUpdate();}
-    void displayCurrentOrder() {orderedMeals.displayOrderedMeals();}
+    void displayMenu() {orderedMeals.displayMenu();}
+    void updateOrder() {orderedMeals.updateOrder();}
+    void displayOrderedMeals(bool v) {orderedMeals.displayOrderedMeals(v);}
 };
 
 class Customer
@@ -407,9 +410,12 @@ int main()
         string name, phonenum, date, time;
         char vip;
         int quantity;
-        cout << "Good Day! Welcome to TETRA Western Restaurant." << endl;
-        cout << "Make your booking: " << endl << endl;
-        //?line
+
+        cout << endl;
+        line();
+        cout << setw(100) << "Good Day! Welcome to TETRA Western Restaurant." << endl;
+        line();
+        cout << "Make your booking... " << endl << endl;
         cout << "Please enter your name: ";
         getline(cin, name);
         cout << "Please enter phone number (01X-XXXXXXX): ";
@@ -442,38 +448,43 @@ int main()
         cust.setDate(date);                    // set reservation date
         cust.setTime(time);                    // set reservation time
 
+        // display menu
+        cout << endl;
+        custReservation.displayMenu();
+
         // input choice
         int choice;
         do
         {
             cout << endl;
+            line();
             cout << "Press 1 to order meal, press 2 to see cart, press 3 to checkout" << endl;
             cin >> choice;
-
+            line();
             switch (choice)
             {
-            case 1:
-                custReservation.order();
-                break;
+                case 1:
+                    custReservation.updateOrder();
+                    break;
 
-            case 2:
-                custReservation.displayCurrentOrder();
-                break;
+                case 2:
+                    custReservation.displayOrderedMeals(cust.getIsVIP());
+                    break;
             }
         } while (choice != 3);
 
         // Print Summary
-        string line(15, '-');
-        cout << line << endl;
-        cout << "Reservation Summary" << endl;
+        cout << endl << right;
+        line();
+        cout << setw(80) << "RESERVATION SUMMARY" << endl;
+        line();
         cout << "Reservation Number: " << cust.getReserveNum() << endl;
         cout << "Customer Name: " << cust.getName() << endl;
         cout << "Phone Number: " << cust.getPhone() << endl;
-        cout << "VIP Status: " << cust.getIsVIP() << endl
-             << endl;
+        cout << "VIP Status: " << cust.getIsVIP() << endl;
         cout << "Reservation Date & Time: " << cust.getDate() << " at " << cust.getTime() << endl;
-        cout << "Number of Pax: " << custReservation.getQuantity() << endl << endl;
-        custReservation.displayCurrentOrder();
+        cout << "Number of Pax: " << custReservation.getQuantity() << endl;
+        custReservation.displayOrderedMeals(cust.getIsVIP());
 
         cout << "Do you wish to make another reservation? (Y/N): ";
         cin >> status;
