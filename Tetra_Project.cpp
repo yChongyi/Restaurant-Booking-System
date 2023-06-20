@@ -396,6 +396,9 @@ public:
     void setTime(string t) { r.setTime(t); }
     string getTime() { return r.getTime(); }
 
+    void setQuantity(int q) {r.setQuantity(q);}
+    int getQuantity() {return r.getQuantity();}
+
     Reservation getReservation() { return r; }
 };
 
@@ -427,7 +430,7 @@ int main()
         // input reservation details
         cout << "Number of pax: ";
         cin >> quantity;
-        cout << "Date (XX/XX/XXXX): ";
+        cout << "Date (dd/mm/yyyy): ";
         cin >> date;
         cout << "Time (eg: 1400): ";
         cin >> time;
@@ -443,10 +446,10 @@ int main()
         // Customer reservation
         Reservation custReservation = cust.getReservation();
 
-        cust.setReserveNum();                  // generate reservation num
-        custReservation.setQuantity(quantity); // set reservation pax
-        cust.setDate(date);                    // set reservation date
-        cust.setTime(time);                    // set reservation time
+        cust.setReserveNum();         // generate reservation num
+        cust.setQuantity(quantity);   // set reservation pax
+        cust.setDate(date);           // set reservation date
+        cust.setTime(time);           // set reservation time
 
         // display menu
         cout << endl;
@@ -483,7 +486,7 @@ int main()
         cout << "Phone Number: " << cust.getPhone() << endl;
         cout << "VIP Status: " << cust.getIsVIP() << endl;
         cout << "Reservation Date & Time: " << cust.getDate() << " at " << cust.getTime() << endl;
-        cout << "Number of Pax: " << custReservation.getQuantity() << endl;
+        cout << "Number of Pax: " << cust.getQuantity() << endl;
         custReservation.displayOrderedMeals(cust.getIsVIP());
 
         cout << "Do you wish to make another reservation? (Y/N): ";
