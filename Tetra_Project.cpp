@@ -1,3 +1,11 @@
+// Programming Technique II - Group Project
+// Group: Tetra
+// Project Title: Restaurant Booking System
+// Member 1: NG SHU YU A22EC0228
+// Member 2: YEOH CHONG YI A22EC0295
+// Member 3: WONG QIAO YING A22EC0118
+// Member 4: NICOLE LIM TZE YEE A22EC0123
+
 #include <iostream>
 #include <iomanip>
 #include <string>
