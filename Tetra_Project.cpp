@@ -263,6 +263,7 @@ public:
             {
                 cout << "Would you like to order another meal? (y/n): ";
                 cin >> continueChoice;
+                cout << endl;
                 if (continueChoice == 'n')
                 {
                     quit = true;
@@ -432,7 +433,7 @@ int main()
 
         cout << endl;
         line();
-        cout << setw(100) << "Good Day! Welcome to TETRA Western Restaurant." << endl;
+        cout << right << setw(100) << "Good Day! Welcome to TETRA Western Restaurant." << endl;
         line();
         cout << "Make your booking... " << endl << endl;
         cout << "Please enter your name: ";
