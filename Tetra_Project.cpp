@@ -442,7 +442,7 @@ int main()
         cin >> phonenum;
         cout << "Do you have VIP membership? (Y/N): ";
         cin >> vip;
-        vip = toupper(vip);
+        toupper(vip);
 
         // input reservation details
         cout << "Number of pax: ";
@@ -452,7 +452,7 @@ int main()
         cout << "Time (eg: 1400): ";
         cin >> time;
         bool isVIP;
-        if (vip == 'Y')
+        if (vip == 'y' || vip == 'Y')
             isVIP = 1;
         else
             isVIP = 0;
